@@ -13,7 +13,7 @@ const fetchUser = createAsyncThunk(
    "userSlice/fetchUser",
    async (_, { getState }) => {
       const { token } = getState().users;
-      if (token) {
+      if (token && token !== "") {
          const response = await axios.get("/login/data/", {
             headers: {
                authorization: `Token ${token}`,
@@ -51,11 +51,16 @@ const userSlice = createSlice({
          state.isLoggedIn = true;
          state.isLoading = false;
       },
+      [fetchUser.rejected]: (state, action) => {
+         state.user = {}
+         state.isLoggedIn = false;
+         state.isLoading = false;
+      },
       [logoutUser.fulfilled]: (state, action) => {
          state.isLoggedIn = false;
          state.user = {};
          state.token = "";
-
+         
          localStorage.removeItem("user-string");
       },
    },
