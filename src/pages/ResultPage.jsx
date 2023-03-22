@@ -46,7 +46,7 @@ function ResultPage() {
             </h3>
             {subjects?.mark_list?.length < 1 ? (
                 <div className="flex justify-center py-10">
-                    <p className="text-gray-400">No Data Found</p>
+                    <p className="text-gray-400">No Data Found</p> 
                 </div>
             ) : (
             <div className="overflow-x-auto px-11 flex mt-5 justify-center items-center">
@@ -87,7 +87,7 @@ function ResultPage() {
                               <p>{item?.credit}</p>
                            </td>
                            <td className="p-3">
-                              {item?.status === "Approved" ? (
+                              {item?.status === "Passed" ? (
                                  <p className="font-bold text-green-700 capitalize">
                                     {item?.status}
                                  </p>
