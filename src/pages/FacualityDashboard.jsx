@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { HiUserAdd, HiUserGroup } from "react-icons/hi";
+import CreateStudentModal from "../components/CreateStudentModal";
+import { useNavigate } from "react-router-dom";
 
 function FacualityDashboard() {
+   const navigate = useNavigate();
+
+   const [isCreateModalView, setIsCreateModalView] = useState(false);
    const { user } = useSelector((state) => state.users);
+
    return (
       <div className="max-w-screen-xl mx-auto">
          <div className="h-10 flex items-center shadow w-full rounded-lg px-3">
@@ -18,13 +24,16 @@ function FacualityDashboard() {
                   Course:
                </p>
                <p className="text-gray-400 font-[700] uppercase text-[600]">
-                  {user?.selectedCourse}
+                  {user?.course}
                </p>
             </div>
          </div>
          <div className="mt-10">
             <div className="grid grid-cols-2 gap-10">
-               <div className="flex justify-between p-7 bg-blue-300 rounded-lg shadow-lg cursor-pointer">
+               <div
+                  className="flex justify-between p-7 bg-blue-300 rounded-lg shadow-lg cursor-pointer"
+                  onClick={() => navigate("/facuality-dashboard/studentlist")}
+               >
                   <div className="space-y-2">
                      <p className="uppercase font-[800] text-xl text-white">
                         View Students
@@ -37,7 +46,10 @@ function FacualityDashboard() {
                      <HiUserGroup />
                   </div>
                </div>
-               <div className="flex justify-between p-7 bg-white rounded-lg shadow-lg cursor-pointer">
+               <div
+                  className="flex justify-between p-7 bg-white rounded-lg shadow-lg cursor-pointer"
+                  onClick={() => setIsCreateModalView(true)}
+               >
                   <div className="space-y-2">
                      <p className="uppercase font-[800] text-xl text-blue-300">
                         Create Student
@@ -51,6 +63,11 @@ function FacualityDashboard() {
                   </div>
                </div>
             </div>
+            {isCreateModalView && (
+               <CreateStudentModal
+                  setIsCreateModalView={setIsCreateModalView}
+               />
+            )}
          </div>
       </div>
    );

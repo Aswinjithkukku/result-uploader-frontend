@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { MdOutlineDocumentScanner } from "react-icons/md";
+import { logoutUser } from "../redux/slices/userSlice";
+import { useDispatch } from "react-redux";
+import { useHandleClickOutside } from "../hooks";
 
 function Navbar() {
+   const dispatch = useDispatch();
+   const [viewProfile, setViewProfile] = useState(false);
+
+   const profileRef = useRef();
+   useHandleClickOutside(profileRef, () => setViewProfile(false));
+
    return (
       <section>
          <div className="container px-4 mx-auto">
             <nav className="flex justify-between items-center py-6">
                <Link className="text-3xl font-semibold leading-none" to="/">
-                  <h1 className="text-4xl font-bold">Result Manager</h1>
+                  <h1 className="text-3xl font-bold flex gap-2 items-center">
+                     <span className="">
+                        <MdOutlineDocumentScanner />
+                     </span>
+                     <span className="">Docomizer</span>
+                  </h1>
                </Link>
                <div className="lg:hidden">
                   <button className="navbar-burger flex items-center py-2 px-3 text-blue-600 hover:text-blue-700 rounded border border-blue-200 hover:border-blue-300">
@@ -23,51 +38,52 @@ function Navbar() {
                </div>
                <ul className="hidden lg:flex lg:items-center lg:w-auto lg:space-x-12">
                   <li>
-                     <a
-                        className="text-sm text-blueGray-400 hover:text-blueGray-500"
-                        href="#"
-                     >
+                     <p className="text-sm text-blueGray-400 hover:text-blueGray-500">
                         Product
-                     </a>
+                     </p>
                   </li>
                   <li>
-                     <a
-                        className="text-sm text-blueGray-400 hover:text-blueGray-500"
-                        href="#"
-                     >
+                     <p className="text-sm text-blueGray-400 hover:text-blueGray-500">
                         Company
-                     </a>
+                     </p>
                   </li>
                   <li>
-                     <a
-                        className="text-sm text-blueGray-400 hover:text-blueGray-500"
-                        href="#"
-                     >
+                     <p className="text-sm text-blueGray-400 hover:text-blueGray-500">
                         About Us
-                     </a>
+                     </p>
                   </li>
                   <li>
-                     <a
-                        className="text-sm text-blueGray-400 hover:text-blueGray-500"
-                        href="#"
-                     >
+                     <p className="text-sm text-blueGray-400 hover:text-blueGray-500">
                         Features
-                     </a>
+                     </p>
                   </li>
                </ul>
                <div className="hidden lg:block">
-                  <a
-                     className="mr-2 inline-block px-4 py-3 text-xs text-blue-600 hover:text-blue-700 font-semibold leading-none border border-blue-200 hover:border-blue-300 rounded"
-                     href="#"
-                  >
-                     Log In
-                  </a>
-                  <a
-                     className="inline-block px-4 py-3 text-xs font-semibold leading-none bg-blue-600 hover:bg-blue-700 text-white rounded"
-                     href="#"
-                  >
-                     Sign Up
-                  </a>
+                  <div ref={profileRef} className="relative">
+                     <div
+                        className="h-9 w-9"
+                        onClick={() => setViewProfile(true)}
+                     >
+                        <img
+                           src={`https://api.dicebear.com/5.x/fun-emoji/svg`}
+                           alt="pro"
+                           className="w-full h-full object-contain"
+                        />
+                     </div>
+                     {viewProfile && (
+                        <div className="absolute w-[10rem] bg-gray-500 right-0 block  text-center py-3 rounded-lg">
+                           <p
+                              className="text-gray-200 uppercase text-sm font-[600] tracking-wide cursor-pointer"
+                              onClick={() => {
+                                 dispatch(logoutUser());
+                                 setViewProfile(false);
+                              }}
+                           >
+                              Logout
+                           </p>
+                        </div>
+                     )}
+                  </div>
                </div>
             </nav>
          </div>
@@ -75,17 +91,14 @@ function Navbar() {
             <div className="navbar-backdrop fixed inset-0 bg-blueGray-800 opacity-25"></div>
             <nav className="relative flex flex-col py-6 px-6 w-full h-full bg-white border-r overflow-y-auto">
                <div className="flex items-center mb-8">
-                  <a
-                     className="mr-auto text-3xl font-semibold leading-none"
-                     href="#"
-                  >
+                  <p className="mr-auto text-3xl font-semibold leading-none">
                      <img
                         className="h-10"
                         src="metis-assets/logos/metis/metis.svg"
                         alt=""
                         width="auto"
                      />
-                  </a>
+                  </p>
                   <button className="navbar-close">
                      <svg
                         className="h-6 w-6 text-blueGray-400 cursor-pointer hover:text-blueGray-500"
@@ -95,9 +108,9 @@ function Navbar() {
                         stroke="currentColor"
                      >
                         <path
-                           stroke-linecap="round"
-                           stroke-linejoin="round"
-                           stroke-width="2"
+                           strokeLinecap="round"
+                           strokeLinejoin="round"
+                           strokeWidth="2"
                            d="M6 18L18 6M6 6l12 12"
                         ></path>
                      </svg>
@@ -106,72 +119,51 @@ function Navbar() {
                <div>
                   <ul>
                      <li className="mb-1">
-                        <a
-                           className="block p-4 text-sm text-blueGray-500 hover:bg-blue-50 hover:text-blue-600"
-                           href="#"
-                        >
+                        <p className="block p-4 text-sm text-blueGray-500 hover:bg-blue-50 hover:text-blue-600">
                            Product
-                        </a>
+                        </p>
                      </li>
                      <li className="mb-1">
-                        <a
-                           className="block p-4 text-sm text-blueGray-500 hover:bg-blue-50 hover:text-blue-600"
-                           href="#"
-                        >
+                        <p className="block p-4 text-sm text-blueGray-500 hover:bg-blue-50 hover:text-blue-600">
                            Company
-                        </a>
+                        </p>
                      </li>
                      <li className="mb-1">
-                        <a
-                           className="block p-4 text-sm text-blueGray-500 hover:bg-blue-50 hover:text-blue-600"
-                           href="#"
-                        >
+                        <p className="block p-4 text-sm text-blueGray-500 hover:bg-blue-50 hover:text-blue-600">
                            About Us
-                        </a>
+                        </p>
                      </li>
                      <li className="mb-1">
-                        <a
-                           className="block p-4 text-sm text-blueGray-500 hover:bg-blue-50 hover:text-blue-600"
-                           href="#"
-                        >
+                        <p className="block p-4 text-sm text-blueGray-500 hover:bg-blue-50 hover:text-blue-600">
                            Features
-                        </a>
+                        </p>
                      </li>
                   </ul>
                   <div className="mt-4 pt-6 border-t border-blueGray-100">
-                     <a
-                        className="block px-4 py-3 mb-3 text-xs text-center font-semibold leading-none bg-blue-600 hover:bg-blue-700 text-white rounded"
-                        href="#"
-                     >
+                     <p className="block px-4 py-3 mb-3 text-xs text-center font-semibold leading-none bg-blue-600 hover:bg-blue-700 text-white rounded">
                         Sign Up
-                     </a>
-                     <a
-                        className="block px-4 py-3 mb-2 text-xs text-center text-blue-600 hover:text-blue-700 font-semibold leading-none border border-blue-200 hover:border-blue-300 rounded"
-                        href="#"
-                     >
+                     </p>
+                     <p className="block px-4 py-3 mb-2 text-xs text-center text-blue-600 hover:text-blue-700 font-semibold leading-none border border-blue-200 hover:border-blue-300 rounded">
                         Log In
-                     </a>
+                     </p>
                   </div>
                </div>
                <div className="mt-auto">
-                  <p className="my-4 text-xs text-blueGray-400">
+                  <div className="my-4 text-xs text-blueGray-400">
                      <span>Get in Touch</span>
-                     <a
-                        className="text-blue-600 hover:text-blue-600 underline"
-                        href="#"
-                     >
+                     <p className="text-blue-600 hover:text-blue-600 underline">
                         info@example.com
-                     </a>
-                  </p>
-                  <a className="inline-block px-1" href="#">
+                     </p>
+                  </div>
+                  <p className="inline-block px-1">
                      <img src="metis-assets/icons/facebook-blue.svg" alt="" />
-                  </a>
-                  <a className="inline-block px-1" href="#">
+                  </p>
+                  <p className="inline-block px-1">
                      <img src="metis-assets/icons/twitter-blue.svg" alt="" />
-                  </a>
-                  <a className="inline-block px-1" href="#">
+                  </p>
+                  <p className="inline-block px-1">
                      <img src="metis-assets/icons/instagram-blue.svg" alt="" />
-                  </a>
+                  </p>
                </div>
             </nav>
          </div>
