@@ -54,10 +54,9 @@ function HomePage() {
                      className="uppercase text-gray-400 border  font-[700] py-3 px-6 rounded"
                      onClick={() => {
                         user?.user_role === 2
-                           ? navigate("/facuality-dashboard")
-                           : user?.role === 3
-                           ? navigate("/student-dashboard")
-                           : navigate("/");
+                           && navigate("/facuality-dashboard")
+                        user?.user_role === 3
+                           && navigate("/student-dashboard")
                      }}
                   >
                      View Dashboard
