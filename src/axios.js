@@ -22,7 +22,7 @@ const AxiosInterceptor = ({ children }) => {
 
       const errInterceptor = (error) => {
          console.log("errInterceptor");
-         if (error.response.status === 401 || 400) {
+         if (error.response.status === 401) {
             dispatch(logoutUser());
             redirect("/login");
          }
