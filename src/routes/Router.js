@@ -8,6 +8,7 @@ import {
    ResultPageStudent,
    StudentDashboard,
    StudentListPage,
+   SubjectListPage,
 } from "../pages";
 import MainLayout from "./MainLayout";
 import PrivateRoute from "./PrivateRoute";
@@ -27,6 +28,10 @@ const ThemeRoutes = [
          {
             path: "/facuality-dashboard/studentlist",
             element: <StudentListPage />,
+         },
+         {
+            path: "/facuality-dashboard/subjectlist",
+            element: <SubjectListPage />,
          },
          { path: "/:id/semester/:semid", element: <ResultPage /> },
          { path: "/:id/semester/student/:semid", element: <ResultPageStudent /> },

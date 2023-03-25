@@ -24,19 +24,19 @@ function HomePage() {
                               <span className="inline-block py-2 px-3 mr-4 text-xs font-semibold bg-green-50 text-green-600 rounded">
                                  1
                               </span>
-                              <span>Proin volutpat ex eu</span>
+                              <span>Transparent Result Management</span>
                            </li>
                            <li className="py-4">
                               <span className="inline-block py-2 px-3 mr-4 text-xs font-semibold bg-green-50 text-green-600 rounded">
                                  2
                               </span>
-                              <span>Fusce posuere nibh in cursus</span>
+                              <span>Result Report and Analysis</span>
                            </li>
                            <li className="py-4">
                               <span className="inline-block py-2 px-3 mr-4 text-xs font-semibold bg-green-50 text-green-600 rounded">
                                  3
                               </span>
-                              <span>Maecenas sit amet vehicula</span>
+                              <span>Visualize Results</span>
                            </li>
                         </ul>
                      </div>

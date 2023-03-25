@@ -29,25 +29,41 @@ function FacualityDashboard() {
             </div>
          </div>
          <div className="mt-10">
-            <div className="grid grid-cols-2 gap-10">
+            <div className="sm:grid grid-cols-2 px-4 gap-10">
                <div
-                  className="flex justify-between p-7 bg-blue-300 rounded-lg shadow-lg cursor-pointer"
+                  className="flex justify-between p-7 mb-2  bg-white rounded-lg shadow-lg cursor-pointer"
                   onClick={() => navigate("/facuality-dashboard/studentlist")}
                >
                   <div className="space-y-2">
-                     <p className="uppercase font-[800] text-xl text-white">
+                     <p className="uppercase font-[800] text-xl text-blue-300">
                         View Students
                      </p>
-                     <p className="uppercase font-[800] text-xs underline text-white">
+                     <p className="uppercase font-[800] text-xs underline text-blue-300">
                         click here to see details
                      </p>
                   </div>
-                  <div className="text-6xl text-white">
+                  <div className="text-6xl text-blue-300">
                      <HiUserGroup />
                   </div>
                </div>
                <div
-                  className="flex justify-between p-7 bg-white rounded-lg shadow-lg cursor-pointer"
+                  className="flex justify-between p-7 mb-2 bg-white rounded-lg shadow-lg cursor-pointer"
+                  onClick={() => navigate("/facuality-dashboard/subjectlist")}
+               >
+                  <div className="space-y-2">
+                     <p className="uppercase font-[800] text-xl text-blue-300">
+                        View Subject
+                     </p>
+                     <p className="uppercase font-[800] text-xs underline text-blue-300">
+                        click here to see details
+                     </p>
+                  </div>
+                  <div className="text-6xl text-blue-300">
+                     <HiUserAdd />
+                  </div>
+               </div>
+               <div
+                  className="flex col-span-2  justify-between p-7  bg-white rounded-lg shadow-lg cursor-pointer"
                   onClick={() => setIsCreateModalView(true)}
                >
                   <div className="space-y-2">
