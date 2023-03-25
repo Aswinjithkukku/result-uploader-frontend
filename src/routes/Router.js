@@ -5,6 +5,8 @@ import {
    LoginPage,
    MarkSheetUpload,
    ResultPage,
+   ResultPageStudent,
+   StudentDashboard,
    StudentListPage,
 } from "../pages";
 import MainLayout from "./MainLayout";
@@ -21,11 +23,13 @@ const ThemeRoutes = [
       children: [
          { path: "", element: <HomePage /> },
          { path: "/facuality-dashboard", element: <FacualityDashboard /> },
+         { path: "/student-dashboard", element: <StudentDashboard /> },
          {
             path: "/facuality-dashboard/studentlist",
             element: <StudentListPage />,
          },
          { path: "/:id/semester/:semid", element: <ResultPage /> },
+         { path: "/:id/semester/student/:semid", element: <ResultPageStudent /> },
          { path: "/marksheet-upload", element: <MarkSheetUpload /> },
          { path: "/:id/examlist", element: <ExamsListPage /> },
       ],

@@ -5,6 +5,8 @@ import ResultPage from "./ResultPage";
 import MarkSheetUpload from "./MarkSheetUpload";
 import StudentListPage from "./StudentListPage";
 import ExamsListPage from "./ExamsListPage";
+import ResultPageStudent from "./ResultPageStudent";
+import StudentDashboard from "./StudentDashboard";
 
 export {
    HomePage,
@@ -14,4 +16,6 @@ export {
    ResultPage,
    StudentListPage,
    ExamsListPage,
+   ResultPageStudent,
+   StudentDashboard,
 };

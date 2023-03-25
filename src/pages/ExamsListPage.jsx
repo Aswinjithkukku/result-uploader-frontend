@@ -46,7 +46,9 @@ function ExamsListPage() {
          <div className="space-y-4">
             {exams?.map((item) => (
                <div key={item?.id} className="bg-gray-100/50 shadow-lg py-7 w-full rounded-lg cursor-pointer"
-               onClick={() => navigate(`/${params.id}/semester/${item?.id}`)}
+               onClick={() => {
+                  user?.user_role === 2 ? navigate(`/${params.id}/semester/${item?.id}`) : navigate(`/${params.id}/semester/student/${item?.id}`)
+               }}
                >
                   <p className="text-center text-lg font-[700] text-gray-500 uppercase">
                      {item?.exam_name}
