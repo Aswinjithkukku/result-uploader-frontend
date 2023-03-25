@@ -81,10 +81,10 @@ function ResultPageStudent() {
                               <p>{item?.grade_point}</p>
                            </td>
                            <td className="p-3">
-                              <p>{item?.credit_point}</p>
+                              <p>{item?.credit}</p>
                            </td>
                            <td className="p-3">
-                              <p>{item?.credit}</p>
+                              <p>{item?.credit_point}</p>
                            </td>
                            <td className="p-3">
                               {item?.status === "Passed" ? (
