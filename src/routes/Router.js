@@ -9,6 +9,7 @@ import {
    StudentDashboard,
    StudentListPage,
    SubjectListPage,
+   SubjectWiseResultPage,
 } from "../pages";
 import MainLayout from "./MainLayout";
 import PrivateRoute from "./PrivateRoute";
@@ -34,6 +35,7 @@ const ThemeRoutes = [
             element: <SubjectListPage />,
          },
          { path: "/:id/semester/:semid", element: <ResultPage /> },
+         { path: "/subject/:subid", element: <SubjectWiseResultPage /> },
          { path: "/:id/semester/student/:semid", element: <ResultPageStudent /> },
          { path: "/marksheet-upload", element: <MarkSheetUpload /> },
          { path: "/:id/examlist", element: <ExamsListPage /> },

@@ -8,6 +8,7 @@ import ExamsListPage from "./ExamsListPage";
 import ResultPageStudent from "./ResultPageStudent";
 import StudentDashboard from "./StudentDashboard";
 import SubjectListPage from "./SubjectListPage";
+import SubjectWiseResultPage from "./SubjectWiseResultPage";
 
 export {
    HomePage,
@@ -20,4 +21,5 @@ export {
    ResultPageStudent,
    StudentDashboard,
    SubjectListPage,
+   SubjectWiseResultPage,
 };
