@@ -14,24 +14,28 @@ function StudentDashboard() {
       <div className="max-w-screen-xl mx-auto">
          <div className="h-10 flex items-center shadow w-full rounded-lg px-3">
             <div className="flex gap-3 ">
-               <p className="text-gray-300 font-[700] uppercase text-[600]">
-                  Student:
-               </p>
-               <p className="text-gray-400 font-[700] uppercase text-[600]">
-                  {user?.username}
-               </p>
-               <p className="text-gray-300 font-[700] uppercase text-[600]">
-                  Course:
-               </p>
-               <p className="text-gray-400 font-[700] uppercase text-[600]">
-                  {user?.course}
-               </p>
+               <div className="sm:flex gap-3">
+                  <p className="text-gray-300 font-[700] uppercase text-[600]">
+                     Student:
+                  </p>
+                  <p className="text-gray-400 font-[700] uppercase text-[600]">
+                     {user?.username}
+                  </p>
+               </div>
+               <div className="sm:flex gap-3">
+                  <p className="text-gray-300 font-[700] uppercase text-[600]">
+                     Course:
+                  </p>
+                  <p className="text-gray-400 font-[700] uppercase text-[600]">
+                     {user?.course}
+                  </p>
+               </div>
             </div>
          </div>
          <div className="mt-10">
-            <div className="grid grid-cols-2 gap-10">
+            <div className="sm:grid grid-cols-2 px-4 gap-10">
                <div
-                  className="flex justify-between p-7 bg-blue-300 rounded-lg shadow-lg cursor-pointer"
+                  className="flex justify-between p-7 bg-blue-300 rounded-lg shadow-lg cursor-pointer mb-2"
                   onClick={() => navigate(`/${user?.profile_id}/examlist`)}
                >
                   <div className="space-y-2">
@@ -47,7 +51,7 @@ function StudentDashboard() {
                   </div>
                </div>
                <div
-                  className="flex justify-between p-7 bg-white rounded-lg shadow-lg cursor-pointer"
+                  className="flex justify-between p-7 bg-white rounded-lg shadow-lg cursor-pointer mb-2"
                   onClick={() => navigate("/marksheet-upload")}
                >
                   <div className="space-y-2">

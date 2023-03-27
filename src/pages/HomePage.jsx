@@ -7,7 +7,7 @@ function HomePage() {
    const { user } = useSelector((state) => state.users);
    return (
       <div>
-         <section className="py-20">
+         <section className="sm:py-20">
             <div className="container px-4 mx-auto">
                <div className="flex flex-wrap -mx-3">
                   <div className="w-full md:w-1/2 px-3 order-1 md:order-0">
@@ -16,8 +16,7 @@ function HomePage() {
                            The Perfect Classmate Partner
                         </h2>
                         <p className="mb-6 leading-loose text-blueGray-400">
-                           Lorem ipsum dolor sit amet, consectetur adipiscing
-                           elit. Sed luctus eget justo et iaculis.
+                           Transforming result management through automation and transparency.
                         </p>
                         <ul>
                            <li className="py-4">
@@ -51,7 +50,7 @@ function HomePage() {
                </div>
                <div className="flex justify-center items-center">
                   <button
-                     className="uppercase text-gray-400 border  font-[700] py-3 px-6 rounded"
+                     className="uppercase text-gray-400 border w-full sm:w-auto hover:text-black hover:shadow-md mt-2 mb-4 font-[700] py-3 px-6 rounded"
                      onClick={() => {
                         user?.user_role === 2
                            && navigate("/facuality-dashboard")
@@ -59,7 +58,7 @@ function HomePage() {
                            && navigate("/student-dashboard")
                      }}
                   >
-                     View Dashboard
+                     View {user?.user_role === 3 ? "Student" : "Faculty"} Dashboard
                   </button>
                </div>
             </div>

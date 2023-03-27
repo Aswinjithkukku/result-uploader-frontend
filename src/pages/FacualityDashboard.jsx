@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { HiUserAdd, HiUserGroup } from "react-icons/hi";
+import { SiBookstack } from "react-icons/si";
 import CreateStudentModal from "../components/CreateStudentModal";
 import { useNavigate } from "react-router-dom";
 
@@ -14,18 +15,22 @@ function FacualityDashboard() {
       <div className="max-w-screen-xl mx-auto">
          <div className="h-10 flex items-center shadow w-full rounded-lg px-3">
             <div className="flex gap-3 ">
-               <p className="text-gray-300 font-[700] uppercase text-[600]">
-                  Facuality:
-               </p>
-               <p className="text-gray-400 font-[700] uppercase text-[600]">
-                  {user?.username}
-               </p>
-               <p className="text-gray-300 font-[700] uppercase text-[600]">
-                  Course:
-               </p>
-               <p className="text-gray-400 font-[700] uppercase text-[600]">
-                  {user?.course}
-               </p>
+               <div className="sm:flex gap-3">
+                  <p className="text-gray-300 font-[700] uppercase text-[600]">
+                     Facuality:
+                  </p>
+                  <p className="text-gray-400 font-[700] uppercase text-[600]">
+                     {user?.username}
+                  </p>
+               </div>
+               <div className="sm:flex gap-3">
+                  <p className="text-gray-300 font-[700] uppercase text-[600]">
+                     Course:
+                  </p>
+                  <p className="text-gray-400 font-[700] uppercase text-[600]">
+                     {user?.course}
+                  </p>
+               </div>
             </div>
          </div>
          <div className="mt-10">
@@ -59,7 +64,7 @@ function FacualityDashboard() {
                      </p>
                   </div>
                   <div className="text-6xl text-blue-300">
-                     <HiUserAdd />
+                     <SiBookstack />
                   </div>
                </div>
                <div

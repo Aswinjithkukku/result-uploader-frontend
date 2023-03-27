@@ -32,7 +32,7 @@ function CreateStudentModal({ setIsCreateModalView }) {
             }
          );
          setIsLoading(false);
-         Swal.fire("Good job!", "You clicked the button!", "success");
+         Swal.fire("Good job!", "Student Created Successfully!", "success");
       } catch (err) {
          setError(err?.response?.data?.error);
          setIsLoading(false);

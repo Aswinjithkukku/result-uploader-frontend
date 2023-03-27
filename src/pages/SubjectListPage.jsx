@@ -87,7 +87,7 @@ function SubjectListPage() {
                                                             <td className="pb-2 text-center">{index + 1}</td>
                                                             <td className="pb-2">{subject.subject_name}</td>
                                                             <td className="pb-2">
-                                                                <button className="bg-blue-400 py-0.5 px-2 font-semibold text-white rounded-md" onClick={() => (navigate(`/subject/${subject?.id}`))}>View</button>
+                                                                <button className="bg-blue-600 py-0.5 px-2 font-semibold text-white rounded-md" onClick={() => (navigate(`/subject/${subject?.id}`))}>View</button>
                                                             </td>
                                                         </tr>
                                                     )) :

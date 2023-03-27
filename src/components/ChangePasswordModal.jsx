@@ -42,7 +42,7 @@ function ChangePasswordModal({ setIsCreateModalView }) {
     };
 
     return (
-        <div className="fixed inset-0 w-full h-full bg-gray-100/50 flex items-center justify-center z-20 ">
+        <div className="fixed inset-0 w-full h-full bg-gray-100/50 flex items-center justify-center z-20 px-5">
             <div
                 ref={wrapperRef}
                 className="bg-[#fff] w-full rounded-md max-h-[90vh] max-w-[500px]  shadow-[0_1rem_3rem_rgb(0_0_0_/_18%)] overflow-y-auto"

@@ -135,8 +135,15 @@ function ResultPage() {
                               </tr>
                            ))}
                         </tbody>
+                        <tfoot >
+                           <tr>
+                              <div className="px-2 py-4">
+                                 <span className="text-base font-semibold p-2 mt-2">SGPA: </span>
+                                 <span className="text-base ">{subjects?.sgpa}</span>
+                              </div>
+                           </tr>
+                        </tfoot>
                      </table>
-
                   </div>
                   <div className="mt-6 flex justify-center align-middle">
                      <a href={process.env.REACT_APP_SERVER_URL + subjects?.marksheet_doc} className="bg-blue-500 px-4 py-2 rounded text-white">View PDF</a>
