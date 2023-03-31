@@ -2,6 +2,7 @@ import axios from "../axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
+import MarksRow from "../components/MarksRow";
 
 function ResultPageStudent() {
    const params = useParams();
@@ -30,6 +31,24 @@ function ResultPageStudent() {
          console.log(err);
       }
    };
+   const confirmChangesHandler = async () => {
+      try {
+         let formdata = new FormData();
+         formdata.append('id', subjects?.marksheet_id);
+         await axios.post(
+            "/mark/confirm/",
+            formdata,
+            {
+               headers: {
+                  authorization: `Token ${token}`,
+               },
+            }
+         );
+         fetchData();
+      } catch (err) {
+         console.log(err);
+      }
+   }
 
    useEffect(() => {
       fetchData();
@@ -53,6 +72,9 @@ function ResultPageStudent() {
             <h3 className="mb-4 text-xl pl-9 pb-5 font-semibold leading-tight text-zinc-600 capitalize">
                {subjects?.exam}
             </h3>
+            {
+               subjects?.status === "Rejected" && <p className="pl-9 text-red-600">MarkSheet has been rejected by the faculty! Make necessary corrections.</p>
+            }
             {subjects?.mark_list?.length < 1 ? (
                <div className="flex justify-center py-10">
                   <p className="text-gray-400">No Data Found</p>
@@ -72,49 +94,28 @@ function ResultPageStudent() {
                         </tr>
                      </thead>
                      <tbody>
-                        {subjects?.mark_list?.map((item) => (
-                           <tr
-                              key={item.id}
-                              className="border-b border-opacity-20  h-16"
-                           >
-                              <td className="p-3">
-                                 <p>{item?.subject_code}</p>
-                              </td>
-                              <td className="p-3">
-                                 <p>{item?.subject_name}</p>
-                              </td>
-                              <td className="p-3">
-                                 <p>{item?.grade}</p>
-                              </td>
-                              <td className="p-3">
-                                 <p>{item?.grade_point}</p>
-                              </td>
-                              <td className="p-3">
-                                 <p>{item?.credit}</p>
-                              </td>
-                              <td className="p-3">
-                                 <p>{item?.credit_point}</p>
-                              </td>
-                              <td className="p-3">
-                                 {item?.status === "Passed" ? (
-                                    <p className="font-bold text-green-700 capitalize">
-                                       {item?.status}
-                                    </p>
-                                 ) : item?.status === "Failed" ? (
-                                    <p className="font-bold text-red-700 capitalize">
-                                       {item?.status}
-                                    </p>
-                                 ) : (
-                                    ""
-                                 )}
-                              </td>
-                           </tr>
+                        {subjects?.mark_list?.map((item, index) => (
+                           <MarksRow key={index} item={item} status={subjects?.status} />
                         ))}
                      </tbody>
+                     <tfoot >
+                        <tr>
+                           <td className="px-2 py-4">
+                              <span className="text-base font-semibold p-2 mt-2">SGPA: </span>
+                              <span className="text-base ">{subjects?.sgpa}</span>
+                           </td>
+                        </tr>
+                     </tfoot>
                   </table>
                </div>
             )}
          </div>
+         {
+            subjects?.status === "Rejected" &&
+            <div className="flex justify-center">
+               <button onClick={confirmChangesHandler} className="p-2 rounded-md bg-green-600 text-white">Confirm Changes</button>
+            </div>
+         }
       </div>
    );
 }
