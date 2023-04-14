@@ -59,7 +59,7 @@ function ResultPage() {
       <div>
          <div className="container p-2 mx-auto sm:p-4 ">
             <div className="flex justify-between">
-               <h2 className="mb-4 text-2xl pl-9  font-semibold leading-tight capitalize">
+               <h2 className="mb-4 md:text-2xl pl-9  font-semibold leading-tight capitalize">
                   MarkSheet
                   {subjects?.mark_list?.length > 0 && ` - ${subjects?.student} - ${subjects?.course}`}
                </h2>
